@@ -22,6 +22,14 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private List<GameObject> _enemies = new List<GameObject>();
+    [SerializeField]
+    private bool _drawGizmos = true;
+    [SerializeField]
+    private Color _gizmosColor;
+    [SerializeField]
+    private int _gizmosFrequency = 2;
+    [SerializeField]
+    private float _gizmosRadius = 0.1f;
 
     private void Awake() {
         IEnumerator Spawner() {
@@ -45,7 +53,18 @@ public class EnemySpawner : MonoBehaviour {
         return originPosition;
     }
 
+
+    public Vector3 GetSpawnPosition(float degree) {
+        Vector3 originPosition = _originTransform.position;
+
+        originPosition = Quaternion.AngleAxis(degree, Vector3.up) * new Vector3(1, 0, 1);
+        originPosition *= _spawnRange;
+
+        return originPosition;
+    }
+
     public Quaternion GetSpawnRotation() {
+        // TODO: Rotate to origin position.
         return Quaternion.identity;
     }
 
@@ -56,6 +75,18 @@ public class EnemySpawner : MonoBehaviour {
         GameObject newEnemy = Instantiate(_enemyPrefab, spawnPosition, spawnRotation, _spawnContainerTransform);
 
         _enemies.Add(newEnemy);
+    }
+
+    private void OnDrawGizmos() {
+        if (!_drawGizmos) {
+            return;
+        }
+
+        Gizmos.color = _gizmosColor;
+
+        for (int ii = 0; ii < 360 / _gizmosFrequency; ii++) {
+            Gizmos.DrawSphere(GetSpawnPosition(ii * _gizmosFrequency), _gizmosRadius);
+        }
     }
 
 }

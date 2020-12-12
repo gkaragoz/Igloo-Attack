@@ -355,10 +355,14 @@ MonoBehaviour:
   _spawnContainerTransform: {fileID: 289711302}
   _enemyPrefab: {fileID: 7225514525275505736, guid: d4c3bc702365b054ebfe4f693b4e8a39,
     type: 3}
-  _spawnRate: 0.5
+  _spawnRate: 0.2
   _isSpawnerActive: 1
   _spawnRange: 5
   _enemies: []
+  _drawGizmos: 1
+  _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  _gizmosFrequency: 10
+  _gizmosRadius: 0.1
 --- !u!1 &718627592
 GameObject:
   m_ObjectHideFlags: 0
