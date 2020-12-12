@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: -8895650549203073720}
   - component: {fileID: 7848475107182916963}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c135a2212fa27b643913407543be19fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityEnum: 2
 --- !u!114 &2715313118567390389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7225514525275505736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b584dbb9b16f9e438dd2a3f05f5807b, type: 3}
   m_Name: 
@@ -183,9 +184,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7225514525275505736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2669082f1bf19cf4fa1eae3ac3d603cf, type: 3}
+  m_Script: {fileID: 11500000, guid: b7b2854c7c933044d8f7eabf306e9971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetFlag: 3
   _searchDistance: 3
   _searchRate: 1
   _selectedTarget: {fileID: 0}

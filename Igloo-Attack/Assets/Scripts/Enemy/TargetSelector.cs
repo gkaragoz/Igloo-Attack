@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyTargetSelector : MonoBehaviour, IGizmosCircle {
+public class TargetSelector : MonoBehaviour, ITargetable, IGizmosCircle {
 
     [Header("Initializations")]
+    [SerializeField]
+    [EnumFlags]
+    private TargetFlag _targetFlag;
     [SerializeField]
     private float _searchDistance = 10f;
     [SerializeField]
@@ -31,6 +34,18 @@ public class EnemyTargetSelector : MonoBehaviour, IGizmosCircle {
     public bool HasTarget {
         get {
             return _selectedTarget != null;
+        }
+    }
+
+    public TargetFlag TargetFlag {
+        get {
+            return this._targetFlag;
+        }
+    }
+
+    public Transform Transform {
+        get {
+            return this.transform;
         }
     }
 

@@ -27,10 +27,10 @@ public class EnemyMotor : MonoBehaviour {
         }
     }
     
-    private EnemyTargetSelector _targetSelector = null;
+    private TargetSelector _targetSelector = null;
 
     private void Awake() {
-        _targetSelector = GetComponent<EnemyTargetSelector>();
+        _targetSelector = GetComponent<TargetSelector>();
     }
 
     private void Update() {

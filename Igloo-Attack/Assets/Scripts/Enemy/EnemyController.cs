@@ -1,10 +1,26 @@
 ﻿using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour, IEntity {
+
+    [Header("Initializations")]
+    [SerializeField]
+    private EntityEnum _entityEnum;
 
     private EnemyMotor _enemyMotor = null;
     private EnemyAttack _enemyAttack = null;
-    
+
+    public Transform Transform {
+        get {
+            return this.transform;
+        }
+    }
+
+    public EntityEnum EntityEnum {
+        get {
+            return this._entityEnum;
+        }
+    }
+
     private void Awake() {
         _enemyMotor = GetComponent<EnemyMotor>();
         _enemyAttack = GetComponent<EnemyAttack>();
