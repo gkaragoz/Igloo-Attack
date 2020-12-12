@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour, IGizmosCircle {
 
     [SerializeField]
-    public delegate IEntity OnEnemySpawned();
+    private GameEvent _onSomethingSpawned = null;
 
     [Header("Initializations")]
     [SerializeField]
@@ -72,10 +72,16 @@ public class EnemySpawner : MonoBehaviour, IGizmosCircle {
         newEnemy.transform.LookAt(_originTransform.position, Vector3.up);
 
         _enemies.Add(newEnemy);
+
+        _onSomethingSpawned.Raise();
     }
 
     public Vector2 GetRadius() {
         return new Vector2(_spawnRange, _spawnRange);
+    }
+
+    public void DebugTest() {
+        Debug.Log(_enemies.Count);
     }
 
     private void OnDestroy() {
