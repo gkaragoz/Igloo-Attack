@@ -86,6 +86,11 @@ public class EnemyTargetSelector : GizmosMonoBehaviour {
         _gizmosRadius_X = _searchDistance;
         _gizmosRadius_Y = _searchDistance;
 
+        if (HasTarget) {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(SelectedTarget.transform.position, 0.25f);
+        }
+
         base.OnDrawGizmosSelected();
     }
 
