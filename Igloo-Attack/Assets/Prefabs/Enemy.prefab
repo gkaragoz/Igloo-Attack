@@ -162,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7225514525275505736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b584dbb9b16f9e438dd2a3f05f5807b, type: 3}
   m_Name: 
@@ -187,8 +187,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gizmosColor: {r: 1, g: 0.8163534, b: 0, a: 1}
-  _gizmosRadius: 3
+  _gizmosRadius_X: 3
+  _gizmosRadius_Y: 3
   _gizmosDotRadius: 0.1
-  _gizmosFrequency: 5
+  _gizmosFrequency: 90
   _drawGizmos: 1
   _searchDistance: 3
+  _searchRate: 1
+  _selectedTarget: {fileID: 0}
+  _enemies: []

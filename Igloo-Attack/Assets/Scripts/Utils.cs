@@ -17,4 +17,25 @@ public class Utils : MonoBehaviour {
     }
 #endif
 
+    public static void DrawCircle(Vector3 centerPosition, float frequency, float radiusX, float radiusY, float dotSize) {
+        float x;
+        float y;
+        float z;
+
+        if (frequency <= 0) {
+            frequency = 1;
+        }
+
+        float angle = 20f;
+
+        for (int i = 0; i < (frequency + 1); i++) {
+            x = Mathf.Sin(Mathf.Deg2Rad * angle) * radiusX;
+            z = Mathf.Cos(Mathf.Deg2Rad * angle) * radiusY;
+
+            Gizmos.DrawSphere(centerPosition + new Vector3(x, 0, z), dotSize);
+
+            angle += (360f / frequency);
+        }
+    }
+
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : GizmosMonoBehaviour {
 
     [Header("Initializations")]
     [SerializeField]
@@ -17,16 +17,6 @@ public class EnemySpawner : MonoBehaviour {
     private bool _isSpawnerActive = true;
     [SerializeField]
     private float _spawnRange = 5f;
-
-    [Header("Gizmos")]
-    [SerializeField]
-    private bool _drawGizmos = true;
-    [SerializeField]
-    private Color _gizmosColor;
-    [SerializeField]
-    private int _gizmosFrequency = 2;
-    [SerializeField]
-    private float _gizmosRadius = 0.1f;
 
     [Header("Debug")]
     [SerializeField]
@@ -77,20 +67,11 @@ public class EnemySpawner : MonoBehaviour {
         _enemies.Add(newEnemy);
     }
 
-    private void OnDrawGizmos() {
-        if (!_drawGizmos) {
-            return;
-        }
+    public override void OnDrawGizmosSelected() {
+        _gizmosRadius_X = _spawnRange;
+        _gizmosRadius_Y = _spawnRange;
 
-        Gizmos.color = _gizmosColor;
-
-        if (_gizmosFrequency <= 0) {
-            _gizmosFrequency = 1;
-        }
-
-        for (int ii = 0; ii < 360 / _gizmosFrequency; ii++) {
-            Gizmos.DrawSphere(GetSpawnPosition(ii * _gizmosFrequency), _gizmosRadius);
-        }
+        base.OnDrawGizmosSelected();
     }
 
 }
