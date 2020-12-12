@@ -63,16 +63,11 @@ public class EnemySpawner : MonoBehaviour {
         return originPosition;
     }
 
-    public Quaternion GetSpawnRotation() {
-        // TODO: Rotate to origin position.
-        return Quaternion.identity;
-    }
-
     public void Spawn() {
         Vector3 spawnPosition = GetSpawnPosition();
-        Quaternion spawnRotation = GetSpawnRotation();
 
-        GameObject newEnemy = Instantiate(_enemyPrefab, spawnPosition, spawnRotation, _spawnContainerTransform);
+        GameObject newEnemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity, _spawnContainerTransform);
+        newEnemy.transform.LookAt(_originTransform.position, Vector3.up);
 
         _enemies.Add(newEnemy);
     }
