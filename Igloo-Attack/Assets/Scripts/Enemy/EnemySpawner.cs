@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : GizmosMonoBehaviour {
+public class EnemySpawner : MonoBehaviour, IGizmosCircle {
 
     [Header("Initializations")]
     [SerializeField]
@@ -23,16 +23,20 @@ public class EnemySpawner : GizmosMonoBehaviour {
     [Utils.ReadOnly]
     private List<GameObject> _enemies = new List<GameObject>();
 
+    private Coroutine _spawnerCoroutine = null;
+
     private void Awake() {
         IEnumerator Spawner() {
-            while (_isSpawnerActive) {
+            while (true) {
                 yield return new WaitForSeconds(_spawnRate);
 
-                Spawn();
+                if (_isSpawnerActive) {
+                    Spawn();
+                }
             }
         }
 
-        StartCoroutine(Spawner());
+        _spawnerCoroutine = StartCoroutine(Spawner());
     }
 
     public Vector3 GetSpawnPosition() {
@@ -67,11 +71,12 @@ public class EnemySpawner : GizmosMonoBehaviour {
         _enemies.Add(newEnemy);
     }
 
-    public override void OnDrawGizmosSelected() {
-        _gizmosRadius_X = _spawnRange;
-        _gizmosRadius_Y = _spawnRange;
+    public Vector2 GetRadius() {
+        return new Vector2(_spawnRange, _spawnRange);
+    }
 
-        base.OnDrawGizmosSelected();
+    private void OnDestroy() {
+        StopCoroutine(_spawnerCoroutine);
     }
 
 }

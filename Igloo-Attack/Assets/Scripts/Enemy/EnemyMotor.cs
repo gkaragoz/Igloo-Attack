@@ -34,6 +34,10 @@ public class EnemyMotor : MonoBehaviour {
     }
 
     private void Update() {
+        if (_targetSelector.HasTarget) {
+            RotateToTarget(_targetSelector.SelectedTarget.transform);
+        }
+
         if (HasReachedDestination()) {
             Stop();
         } else {
@@ -51,7 +55,6 @@ public class EnemyMotor : MonoBehaviour {
 
     private void Move() {
         if (_targetSelector.HasTarget) {
-            RotateToTarget(_targetSelector.SelectedTarget.transform);
             MoveToTarget(_targetSelector.SelectedTarget.transform);
         } else {
             MoveForward();

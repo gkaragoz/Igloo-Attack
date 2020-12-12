@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyTargetSelector : GizmosMonoBehaviour {
+public class EnemyTargetSelector : MonoBehaviour, IGizmosCircle {
 
     [Header("Initializations")]
     [SerializeField]
@@ -16,6 +16,8 @@ public class EnemyTargetSelector : GizmosMonoBehaviour {
     private EnemyController _selectedTarget = null;
     [SerializeField]
     private List<EnemyController> _enemies = null;
+
+    private Coroutine _searchCoroutine = null;
 
     public EnemyController SelectedTarget { 
         get {
@@ -41,7 +43,7 @@ public class EnemyTargetSelector : GizmosMonoBehaviour {
             }
         }
 
-        StartCoroutine(ISearch());
+        _searchCoroutine = StartCoroutine(ISearch());
     }
 
     private void SearchTarget() {
@@ -82,16 +84,19 @@ public class EnemyTargetSelector : GizmosMonoBehaviour {
         }
     }
 
-    public override void OnDrawGizmosSelected() {
-        _gizmosRadius_X = _searchDistance;
-        _gizmosRadius_Y = _searchDistance;
-
+    private void OnDrawGizmosSelected() {
         if (HasTarget) {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(SelectedTarget.transform.position, 0.25f);
         }
+    }
 
-        base.OnDrawGizmosSelected();
+    public Vector2 GetRadius() {
+        return new Vector2(_searchDistance, _searchDistance);
+    }
+
+    private void OnDestroy() {
+        StopCoroutine(_searchCoroutine);
     }
 
 }

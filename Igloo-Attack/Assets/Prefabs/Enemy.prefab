@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 2715313118567390389}
   - component: {fileID: -1233894283005156509}
   - component: {fileID: -8895650549203073720}
+  - component: {fileID: 7848475107182916963}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -168,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 1
-  _rotationSpeed: 1.5
+  _rotationSpeed: 3
   _stoppingDistance: 1
   _forwardGizmosColor: {r: 0, g: 1, b: 0.013794422, a: 1}
   _forwardDrawGizmos: 1
@@ -185,13 +186,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2669082f1bf19cf4fa1eae3ac3d603cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gizmosColor: {r: 1, g: 0.8163534, b: 0, a: 1}
-  _gizmosRadius_X: 3
-  _gizmosRadius_Y: 3
-  _gizmosDotSize: 0.1
-  _gizmosFrequency: 90
-  _drawGizmos: 1
   _searchDistance: 3
   _searchRate: 1
   _selectedTarget: {fileID: 0}
   _enemies: []
+--- !u!114 &7848475107182916963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225514525275505736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fabe6fa0239f8e438203bdb516281a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataScript: {fileID: -8895650549203073720}
+  _centerTransform: {fileID: 7225514525275505739}
+  _gizmosColor: {r: 0.98806953, g: 1, b: 0, a: 1}
+  _gizmosDotSize: 0.1
+  _gizmosFrequency: 60
+  _drawGizmos: 1
