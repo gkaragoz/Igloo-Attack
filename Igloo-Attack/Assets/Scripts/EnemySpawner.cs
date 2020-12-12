@@ -69,6 +69,7 @@ public class EnemySpawner : MonoBehaviour {
         Vector3 spawnPosition = GetSpawnPosition();
 
         GameObject newEnemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity, _spawnContainerTransform);
+        newEnemy.name = "ENEMY(" + _enemies.Count + ")";
 
         // TODO: Refactor. Split this rotation to another method.
         newEnemy.transform.LookAt(_originTransform.position, Vector3.up);

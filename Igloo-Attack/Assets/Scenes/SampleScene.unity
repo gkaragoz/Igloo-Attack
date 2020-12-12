@@ -358,11 +358,11 @@ MonoBehaviour:
   _spawnRate: 0.2
   _isSpawnerActive: 1
   _spawnRange: 5
-  _enemies: []
   _drawGizmos: 1
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
   _gizmosFrequency: 10
   _gizmosRadius: 0.1
+  _enemies: []
 --- !u!1 &718627592
 GameObject:
   m_ObjectHideFlags: 0

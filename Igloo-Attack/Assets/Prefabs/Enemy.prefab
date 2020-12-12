@@ -103,7 +103,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7225514525275505739}
-  - component: {fileID: -2810400497047972357}
+  - component: {fileID: 3811551378417309314}
+  - component: {fileID: 2715313118567390389}
+  - component: {fileID: -1233894283005156509}
+  - component: {fileID: -8895650549203073720}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -126,7 +129,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2810400497047972357
+--- !u!114 &3811551378417309314
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,6 +138,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 7225514525275505736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600b91d82090861459222d29f36d82bb, type: 3}
+  m_Script: {fileID: 11500000, guid: c135a2212fa27b643913407543be19fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2715313118567390389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225514525275505736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3025569b5ec7b2547bf8d0dde6f967f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRate: 1.5
+  _isAttacking: 0
+--- !u!114 &-1233894283005156509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225514525275505736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b584dbb9b16f9e438dd2a3f05f5807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 1
+  _rotationSpeed: 1.5
+  _stoppingDistance: 1
+  _searchDistance: 2
+  _searchGizmosColor: {r: 0, g: 0.50891304, b: 1, a: 1}
+  _searchDrawGizmos: 1
+  _isMoving: 0
+--- !u!114 &-8895650549203073720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225514525275505736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2669082f1bf19cf4fa1eae3ac3d603cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gizmosColor: {r: 1, g: 0.8163534, b: 0, a: 1}
+  _gizmosRadius: 3
+  _gizmosDotRadius: 0.1
+  _gizmosFrequency: 5
+  _drawGizmos: 1
+  _searchDistance: 3
