@@ -18,10 +18,7 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     private float _spawnRange = 5f;
 
-    [Header("Debug")]
-    [SerializeField]
-    [Utils.ReadOnly]
-    private List<GameObject> _enemies = new List<GameObject>();
+    [Header("Gizmos")]
     [SerializeField]
     private bool _drawGizmos = true;
     [SerializeField]
@@ -30,6 +27,11 @@ public class EnemySpawner : MonoBehaviour {
     private int _gizmosFrequency = 2;
     [SerializeField]
     private float _gizmosRadius = 0.1f;
+
+    [Header("Debug")]
+    [SerializeField]
+    [Utils.ReadOnly]
+    private List<GameObject> _enemies = new List<GameObject>();
 
     private void Awake() {
         IEnumerator Spawner() {
