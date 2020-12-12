@@ -19,7 +19,6 @@ public class Utils : MonoBehaviour {
 
     public static void DrawCircle(Vector3 centerPosition, float frequency, float radiusX, float radiusY, float dotSize) {
         float x;
-        float y;
         float z;
 
         if (frequency <= 0) {

@@ -428,7 +428,7 @@ MonoBehaviour:
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
   _gizmosRadius_X: 5
   _gizmosRadius_Y: 5
-  _gizmosDotRadius: 0.1
+  _gizmosDotSize: 0.1
   _gizmosFrequency: 60
   _drawGizmos: 1
   _originTransform: {fileID: 523930479}

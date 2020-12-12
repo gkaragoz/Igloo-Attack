@@ -162,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7225514525275505736}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b584dbb9b16f9e438dd2a3f05f5807b, type: 3}
   m_Name: 
@@ -170,9 +170,8 @@ MonoBehaviour:
   _movementSpeed: 1
   _rotationSpeed: 1.5
   _stoppingDistance: 1
-  _searchDistance: 2
-  _searchGizmosColor: {r: 0, g: 0.50891304, b: 1, a: 1}
-  _searchDrawGizmos: 1
+  _forwardGizmosColor: {r: 0, g: 1, b: 0.013794422, a: 1}
+  _forwardDrawGizmos: 1
   _isMoving: 0
 --- !u!114 &-8895650549203073720
 MonoBehaviour:
@@ -189,7 +188,7 @@ MonoBehaviour:
   _gizmosColor: {r: 1, g: 0.8163534, b: 0, a: 1}
   _gizmosRadius_X: 3
   _gizmosRadius_Y: 3
-  _gizmosDotRadius: 0.1
+  _gizmosDotSize: 0.1
   _gizmosFrequency: 90
   _drawGizmos: 1
   _searchDistance: 3
