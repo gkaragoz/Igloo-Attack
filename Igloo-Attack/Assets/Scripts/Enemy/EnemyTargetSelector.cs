@@ -39,49 +39,36 @@ public class EnemyTargetSelector : MonoBehaviour, IGizmosCircle {
             while (true) {
                 yield return new WaitForSeconds(_searchRate);
 
-                SearchTarget();
+                SelectedTarget = GetClosestTarget();
             }
         }
 
         _searchCoroutine = StartCoroutine(ISearch());
     }
 
-    private void SearchTarget() {
+    private EnemyController GetClosestTarget() {
         _enemies = FindObjectsOfType<EnemyController>().ToList();
         _enemies.Remove(GetComponent<EnemyController>());
 
         if (_enemies.Count == 0) {
-            SelectedTarget = null;
-            return;
+            return null;
         }
 
-        float distance = _searchDistance;
-        bool hasTargetFound = false;
-        foreach (EnemyController targetEnemy in _enemies) {
-            float targetDistance = Vector3.Distance(targetEnemy.transform.position, transform.position);
+        float tempDistance = _searchDistance;
+        EnemyController closestTarget = null;
 
-            if (targetDistance >= _searchDistance) {
-                continue;
-            }
+        for (int ii = 0; ii < _enemies.Count; ii++) {
+            EnemyController potentialTarget = _enemies[ii];
+            float targetDistance = Vector3.Distance(potentialTarget.transform.position, transform.position);
 
-            if (SelectedTarget == null) {
-                SelectedTarget = targetEnemy;
-                distance = targetDistance;
-                hasTargetFound = true;
-
-                continue;
-            }
-
-            if (targetDistance <= distance) {
-                SelectedTarget = targetEnemy;
-                distance = targetDistance;
-                hasTargetFound = true;
+            // Potential target is closer than my current closestTarget?
+            if (targetDistance <= tempDistance) {
+                closestTarget = potentialTarget;
+                tempDistance = targetDistance;
             }
         }
 
-        if (!hasTargetFound) {
-            SelectedTarget = null;
-        }
+        return closestTarget;
     }
 
     private void OnDrawGizmosSelected() {
