@@ -35,7 +35,7 @@ public class EnemyMotor : MonoBehaviour {
 
     private void Update() {
         if (_targetSelector.HasTarget) {
-            RotateToTarget(_targetSelector.SelectedTarget.transform);
+            RotateToTarget(_targetSelector.SelectedTarget.Transform);
         }
 
         if (HasReachedDestination()) {
@@ -47,7 +47,7 @@ public class EnemyMotor : MonoBehaviour {
 
     private bool HasReachedDestination() {
         if (_targetSelector.HasTarget) {
-            float distance = Vector3.Distance(transform.position, _targetSelector.SelectedTarget.transform.position);
+            float distance = Vector3.Distance(transform.position, _targetSelector.SelectedTarget.Transform.position);
             return distance <= _stoppingDistance;
         }
         return false;
@@ -55,7 +55,7 @@ public class EnemyMotor : MonoBehaviour {
 
     private void Move() {
         if (_targetSelector.HasTarget) {
-            MoveToTarget(_targetSelector.SelectedTarget.transform);
+            MoveToTarget(_targetSelector.SelectedTarget.Transform);
         } else {
             MoveForward();
         }

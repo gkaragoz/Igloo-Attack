@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour, IGizmosCircle {
 
+    [SerializeField]
+    public delegate IEntity OnEnemySpawned();
+
     [Header("Initializations")]
     [SerializeField]
     private Transform _originTransform = null;
     [SerializeField]
     private Transform _spawnContainerTransform = null;
     [SerializeField]
-    private GameObject _enemyPrefab = null;
+    private EnemyController _enemyPrefab = null;
     [SerializeField]
     private float _spawnRate = 1f;
     [SerializeField]
@@ -21,7 +24,7 @@ public class EnemySpawner : MonoBehaviour, IGizmosCircle {
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
-    private List<GameObject> _enemies = new List<GameObject>();
+    private List<IEntity> _enemies = new List<IEntity>();
 
     private Coroutine _spawnerCoroutine = null;
 
@@ -62,7 +65,7 @@ public class EnemySpawner : MonoBehaviour, IGizmosCircle {
     public void Spawn() {
         Vector3 spawnPosition = GetSpawnPosition();
 
-        GameObject newEnemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity, _spawnContainerTransform);
+        EnemyController newEnemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity, _spawnContainerTransform);
         newEnemy.name = "ENEMY(" + _enemies.Count + ")";
 
         // TODO: Refactor. Split this rotation to another method.

@@ -16,13 +16,13 @@ public class TargetSelector : MonoBehaviour, ITargetable, IGizmosCircle {
 
     [Header("Debug")]
     [SerializeField]
-    private EnemyController _selectedTarget = null;
+    private IEntity _selectedTarget = null;
     [SerializeField]
-    private List<EnemyController> _enemies = null;
+    private List<IEntity> _enemies = new List<IEntity>();
 
     private Coroutine _searchCoroutine = null;
 
-    public EnemyController SelectedTarget { 
+    public IEntity SelectedTarget { 
         get {
             return _selectedTarget;
         }
@@ -61,20 +61,19 @@ public class TargetSelector : MonoBehaviour, ITargetable, IGizmosCircle {
         _searchCoroutine = StartCoroutine(ISearch());
     }
 
-    private EnemyController GetClosestTarget() {
-        _enemies = FindObjectsOfType<EnemyController>().ToList();
-        _enemies.Remove(GetComponent<EnemyController>());
+    private IEntity GetClosestTarget() {
+        //_enemies = GameObject.FindObjectOfType<IEntity>();
 
         if (_enemies.Count == 0) {
             return null;
         }
 
         float tempDistance = _searchDistance;
-        EnemyController closestTarget = null;
+        IEntity closestTarget = null;
 
         for (int ii = 0; ii < _enemies.Count; ii++) {
-            EnemyController potentialTarget = _enemies[ii];
-            float targetDistance = Vector3.Distance(potentialTarget.transform.position, transform.position);
+            IEntity potentialTarget = _enemies[ii];
+            float targetDistance = Vector3.Distance(potentialTarget.Transform.position, transform.position);
 
             // Potential target is closer than my current closestTarget?
             if (targetDistance <= tempDistance) {
@@ -89,7 +88,7 @@ public class TargetSelector : MonoBehaviour, ITargetable, IGizmosCircle {
     private void OnDrawGizmosSelected() {
         if (HasTarget) {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(SelectedTarget.transform.position, 0.25f);
+            Gizmos.DrawWireSphere(SelectedTarget.Transform.position, 0.25f);
         }
     }
 
