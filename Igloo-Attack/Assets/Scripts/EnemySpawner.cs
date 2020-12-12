@@ -81,6 +81,10 @@ public class EnemySpawner : MonoBehaviour {
 
         Gizmos.color = _gizmosColor;
 
+        if (_gizmosFrequency <= 0) {
+            _gizmosFrequency = 1;
+        }
+
         for (int ii = 0; ii < 360 / _gizmosFrequency; ii++) {
             Gizmos.DrawSphere(GetSpawnPosition(ii * _gizmosFrequency), _gizmosRadius);
         }
